@@ -1,0 +1,4 @@
+Let's say we have an App component which is divided into a Shop and Users component 
+They could be their own containers, managing their own state etc.
+They also have their own Child Components. 
+We have seen that the updating happens from top to bottom and when the STATE or PROPS change.

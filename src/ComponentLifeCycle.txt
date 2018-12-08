@@ -1,0 +1,97 @@
+Stateful components are the only components that have access to lifestyle hooks.
+
+lifestyle Hooks:
+constructor()                   componentWillMount()
+componentWillReceiveProps()     shouldComponentUpdate()
+componentWillUpdate()           componentDidUpdate()
+componentDidCatch()             componentDidMount()
+componentWillUnmount()          render()
+
+Not all methods are executed during creating, only: 
+1) constructor() (ES6 class Feature, not React)
+Do: Set up State
+DON'T: Cause Side-Effects (like calling a website to change the state)
+After the constructor the next function will execute >>>
+e.g:
+constructor(props){
+    super(props) << very important, needs to be on the first line
+    this.state = {bob:"Marley"}
+}
+
+2) componentWillMount() (React method,exists for historic reasons, unlikely we will use it). // try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there)
+Do: Update State, last minute Optimization
+Don't: Cause Side-Effects
+After the componentWillMount, the next function will execute >>>
+
+3) Render() (doesn't access the real DOM)
+Defines how the component will look like from a HTML perspective. Compares the 
+virtual DOM and the real DOM and will only update the changes.
+It will then Render all Child Components within the components.
+After this, the next method will be executed...
+
+4) componentDidMount() checks that everything was assembled correctrly
+Do: Cause Side-Effects
+Don't: Update State (triggers re-render)
+
+The methods that are executed during an update (triggered by a Parent/external update):
+
+1) componentWillReceiveProps(nextProps) // try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there) due to incorrect use (setting state in there)
+Do: Set up/Sync State
+Don't: Cause Side-Effects
+
+One thing we can do in this method is synchronize our local state of the component
+to the props. Initialise the state with the props.
+
+2) shouldComponentUpdate(nextProps,nextState) this method may cancel the updating process
+If you return true, the updating continues. If you return false, the updating stops.
+No other method you return anything, here true/false. If you return false, its more efficient
+obviously as nothing needs to get updated.
+Do: Decide whether to continue or not.
+Don't Cause Side-Effects
+
+3) componentWillUpdate(nextProps,nextState)... only if shouldComponentUpdate() returned true
+Do: Sync/Set up state (better place than componentWillReceiveProps) because here you KNOW you will continue with the updating
+Don't: Cause side-effects 
+If you use this method effectively you can save a lot of performace.. 
+
+4) Render() again
+5) Update Child Components Props
+6) componentDidUpdate()
+Do: Cause Side-Effects
+Don't: Change the state as it will acause a re-render
+
+You might turn your stateless component into a stateful component if it receives a lot of props
+but only depends on 1 to change its state 
+
+The methods that are executed during an INTERNAL update:
+
+1) shouldComponentUpdate(nextProps,nextState) as we aren't receiving props, this will be the first method that is run
+Do: Sync/Set up state (better place than componentWillReceiveProps) because here you KNOW you will continue with the updating
+Don't: Cause side-effects 
+If you use this method effectively you can save a lot of performace.. 
+
+2) componentWillUpdate(nextProps,nextState)... only if shouldComponentUpdate() returned true // try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there)
+Do: Sync/Set up state (better place than componentWillReceiveProps) because here you KNOW you will continue with the updating
+Don't: Cause side-effects 
+If you use this method effectively you can save a lot of performace.. 
+
+3) Render again
+5) Update Child Components Props
+6) componentDidUpdate()
+Do: Cause Side-Effects
+Don't: Change the state as it will acause a re-render
+
+------------------------------------------------------------------------------------
+New LifeCycle hooks React 16.3:
+
+static getDerivedStateFromProps(nextProps,prevState){
+    // executed whenever the props are updated and it gives us a chance to update the state with them
+    // We should rarely want this as the state should not be tightly coupled to the props (independant)
+    // 
+}
+
+getSnapshotBeforeUpdate(){
+    // Allows us to get a snapshot of our DOM right before its about to change
+    // Great place to save current position of the scroll of a user for example, saves before the DOm changes.
+    // and from the componentDidUpdate for example you can take them back to their old scrolling position.
+}

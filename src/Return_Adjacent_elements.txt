@@ -1,0 +1,9 @@
+We've seen that we can't return elements if they are adjacent to each other
+they need to be wrapped in one block such as a div.
+We coould also create a component that just spreads the children (like Aux.js) so that
+a div would not be needed.
+You could also return adjacent elements by returning them via an array:
+e.g return [
+    <p>I'm a paragraph</p>,
+    <p>I'm another paragraph, button or whatnot</p>
+]

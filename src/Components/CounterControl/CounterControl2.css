@@ -1,0 +1,17 @@
+.CounterControl2 {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-size: 25px;
+  margin: 15px;
+
+  width: 250px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  background-color: rgb(255, 51, 0);
+  box-sizing: border-box;
+  cursor: pointer;
+}

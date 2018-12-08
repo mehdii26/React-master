@@ -1,0 +1,12 @@
+POSTS:
+ - CSS to make things prettier
+ - Nested Routes
+ - Routing & Server (Deployment)
+ - Downloading only certain components (and the rest when needed) with bigger React projects
+ - Handling 404
+ - Guarding against unauthorised users
+ - Different methods of re-directing
+
+ 
+ Burger Builder:
+ - Fix withErrorHandler HOC

@@ -1,0 +1,11 @@
+/*This is a global stylesheet, editing this person will change ALL persons*/
+.Person {
+    width: 20rem;
+    margin: 16px auto;
+    border:1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding:16px;
+    text-align:center;
+    height: 7rem;
+    vertical-align: center;
+}

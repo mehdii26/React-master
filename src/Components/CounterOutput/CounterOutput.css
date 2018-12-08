@@ -1,0 +1,12 @@
+.CounterOutput {
+  background-color: orange;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+}
+
+

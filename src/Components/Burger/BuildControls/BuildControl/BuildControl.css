@@ -1,0 +1,24 @@
+.Label {
+    padding: 10px;
+    font-weight:bold;
+    width: 80px;
+}
+.Less {
+    background-color: #D39952;
+    color: white;
+}
+.More {
+    background-color: #8f5e1e;
+    color: white;
+}
+
+.Less:hover, .Less:active{
+background-color: #Daa792;
+color: white;
+}
+
+
+.More:hover, .More:active{
+    background-color: #99703F;
+    color: white;
+    }

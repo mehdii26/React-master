@@ -1,0 +1,24 @@
+# Understand Classes... Chapter 2 ... two classes, inheritance, reason for super keyword.
+
+class Person {
+constructor(){ // Property is Added by adding a constructor. A constructor is a default function method that you can add to any class which will be 
+// executed whenever you instantiate the class. We can now set-up property names using the "this" keyword
+this.name="Ibz";
+}
+}
+
+# Chapter 3 ... Understanding the Base Features & Syntax:
+
+Creating a React-App and a server:
+
+sudo npom install create-react-app -g # The g is to make it global
+Once installed you will now create your project name using:
+create-react-app my-project
+Then move into that folder and issue the command yarn/npm start
+
+TYPES OF STATE:
+
+Type:               Example:                            REDUX?
+Local UI State      Show/Hide Modal                     NO, mostly handled within components
+Persistent State    All Users, All Posts etc            YES, relevant pieces managed by Redux
+Client State        Is Authenticated? Filters set etc   YES! Managed by Redux
